@@ -1,0 +1,37 @@
+version: '3.8'
+
+networks:
+  integration-tests:
+    driver: bridge
+
+services:
+
+  feed-service-test:
+    container_name: feed-service-test
+    depends_on:
+      feed-service-cache-test:
+        condition: service_healthy
+    build:
+      dockerfile: test.Dockerfile
+    environment:
+      - GRPC_HOST=0.0.0.0
+      - GRPC_PORT=3030
+      - LOG_LVL=info
+      - CACHE_HOST=feed-service-cache-test
+      - CACHE_PORT=6379
+      - FEED_DB_IDX=2
+      - KAFKA_ENABLE=false
+    networks:
+      - integration-tests
+
+  feed-service-cache-test:
+    image: redis:7.0-alpine
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 500ms
+      timeout: 1s
+      retries: 10
+    ports:
+      - "6379:6379/tcp"
+    networks:
+      - integration-tests
