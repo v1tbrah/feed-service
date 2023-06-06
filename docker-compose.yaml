@@ -47,8 +47,6 @@ services:
     container_name: feed-service-cache
     volumes:
       - feed-cache-data:/data:rw
-    ports:
-      - "6379:6379/tcp"
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
       interval: 500ms
@@ -63,6 +61,8 @@ services:
     depends_on:
       relation-service-storage:
         condition: service_healthy
+      kafka:
+        condition: service_healthy
     environment:
       - GRPC_HOST=0.0.0.0
       - GRPC_PORT=4040
@@ -74,8 +74,6 @@ services:
       - STORAGE_DB_NAME=neo4j
       - KAFKA_HOST=kafka
       - KAFKA_PORT=9092
-    expose:
-      - "4040"
     ports:
       - "4040:4040"
     networks:
@@ -92,12 +90,6 @@ services:
       start_period: 3s
     environment:
       - NEO4J_AUTH=neo4j/password
-    expose:
-      - "7687"
-      - "7474"
-    ports:
-      - "7474:7474"
-      - "7687:7687"
     networks:
       - default-network
 
@@ -105,8 +97,8 @@ services:
     image: v1tbrah/post-service:v1-release
     container_name: post-service
     depends_on:
-      post-service-storage:
-        condition: service_healthy
+      post-service-storage-migrate:
+        condition: service_completed_successfully
       kafka:
         condition: service_healthy
     build:
@@ -118,11 +110,8 @@ services:
       - STORAGE_HOST=post-service-storage
       - STORAGE_PORT=5432
       - STORAGE_USER=postgres
-      - STORAGE_PASSWORD=postgres
-      - POST_DB_NAME=postgres
-      - POST_TABLE_NAME=post
-      - HASHTAG_TABLE_NAME=hashtag
-      - HASHTAG_PER_POST_TABLE_NAME=hashtag_per_post
+      - STORAGE_PASSWORD=password
+      - POST_DB_NAME=posts
       - KAFKA_HOST=kafka
       - KAFKA_PORT=9092
     ports:
@@ -131,7 +120,7 @@ services:
       - default-network
 
   post-service-storage:
-    image: postgres:latest
+    image: postgres:alpine
     container_name: post-service-storage
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready" ]
@@ -140,9 +129,22 @@ services:
       retries: 5
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=password
     volumes:
+      - ./dependencies/post-service/init.sql:/docker-entrypoint-initdb.d/init.sql
       - post-storage-data:/var/lib/postgresql/data
+    networks:
+      - default-network
+
+  post-service-storage-migrate:
+    image: migrate/migrate:v4.15.2 # Image page: <https://hub.docker.com/r/migrate/migrate>
+    container_name: post-service-storage-migrate
+    volumes: [ .:/src:ro ]
+    working_dir: /src
+    entrypoint: migrate -database "postgres://postgres:password@post-service-storage:5432/posts?sslmode=disable" -source file://./dependencies/post-service/migrations -verbose up
+    depends_on:
+      post-service-storage:
+        condition: service_healthy
     networks:
       - default-network
 

@@ -13,10 +13,10 @@ import (
 type Cache struct {
 	cli *redis.Client
 
-	cfg config.CacheConfig
+	cfg config.Cache
 }
 
-func Init(cfg config.CacheConfig) (*Cache, error) {
+func Init(cfg config.Cache) (*Cache, error) {
 	cli := redis.NewClient(&redis.Options{
 		Addr: cfg.Host + ":" + cfg.Port,
 		DB:   cfg.FeedDBIdx,

@@ -8,30 +8,30 @@ const (
 )
 
 const (
-	envNamePostServiceClientHost = "RELATION_SERVICE_CLIENT_HOST"
-	envNamePostServiceClientPort = "RELATION_SERVICE_CLIENT_PORT"
+	envNamePostServiceClientHost = "POST_SERVICE_CLIENT_HOST"
+	envNamePostServiceClientPort = "POST_SERVICE_CLIENT_PORT"
 )
 
 type PostCli struct {
-	ServHost string
-	ServPort string
+	Host string
+	Port string
 }
 
 func newDefaultPostCliConfig() PostCli {
 	return PostCli{
-		ServHost: defaultPostServiceClientHost,
-		ServPort: defaultPostServiceClientPort,
+		Host: defaultPostServiceClientHost,
+		Port: defaultPostServiceClientPort,
 	}
 }
 
 func (u *PostCli) parseEnv() {
 	envServHost := os.Getenv(envNamePostServiceClientHost)
 	if envServHost != "" {
-		u.ServHost = envServHost
+		u.Host = envServHost
 	}
 
 	envServPort := os.Getenv(envNamePostServiceClientPort)
 	if envServPort != "" {
-		u.ServPort = envServPort
+		u.Port = envServPort
 	}
 }

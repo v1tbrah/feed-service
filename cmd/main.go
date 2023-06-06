@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -30,30 +30,30 @@ func main() {
 
 	ctxStart, ctxStartCancel := context.WithCancel(context.Background())
 
-	newCache, err := cache.Init(newConfig.CacheConfig)
+	newCache, err := cache.Init(newConfig.Cache)
 	if err != nil {
-		log.Fatal().Err(err).Str("config", fmt.Sprintf("%+v", newConfig.CacheConfig)).Msg("storage.Init")
+		log.Fatal().Err(err).Interface("config", newConfig.Cache).Msg("storage.Init")
 	} else {
 		log.Info().Msg("storage initialized")
 	}
 
-	newRelationCli, err := relationcli.New(newConfig.RelationCliConfig)
+	newRelationCli, err := relationcli.New(newConfig.RelationCli)
 	if err != nil {
 		log.Fatal().Err(err).Msg("relationcli.New")
 	} else {
 		log.Info().Msg("relationcli initialized")
 	}
 
-	newPostCli, err := postcli.New(newConfig.PostCliConfig)
+	newPostCli, err := postcli.New(newConfig.PostCli)
 	if err != nil {
 		log.Fatal().Err(err).Msg("postcli.New")
 	} else {
 		log.Info().Msg("postcli initialized")
 	}
 
-	newMsgReader, err := eventreader.Init(ctxStart, newCache, newRelationCli, newPostCli, newConfig.KafkaConfig)
+	newMsgReader, err := eventreader.Init(ctxStart, newCache, newRelationCli, newPostCli, newConfig.Kafka)
 	if err != nil {
-		log.Fatal().Err(err).Interface("config", newConfig.KafkaConfig).Msg("msgrdr.New")
+		log.Fatal().Err(err).Interface("config", newConfig.Kafka).Msg("msgrdr.New")
 	} else {
 		log.Info().Msg("message reader initialized")
 	}
@@ -65,13 +65,14 @@ func main() {
 
 	errServingCh := make(chan error)
 	go func() {
-		errServing := newAPI.StartServing(context.Background(), newConfig.GRPCConfig, shutdownSig)
+		errServing := newAPI.StartServing(context.Background(), newConfig.GRPC, shutdownSig)
 		errServingCh <- errServing
 	}()
 
 	select {
-	case <-shutdownSig:
+	case shutdownSigValue := <-shutdownSig:
 		close(shutdownSig)
+		log.Info().Msgf("Shutdown signal received: %s", strings.ToUpper(shutdownSigValue.String()))
 	case errServing := <-errServingCh:
 		if errServing != nil {
 			log.Error().Err(errServing).Msg("newAPI.StartServing")

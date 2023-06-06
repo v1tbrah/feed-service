@@ -18,7 +18,7 @@ func (a *API) GetFeed(ctx context.Context, req *fpbapi.GetFeedRequest) (*fpbapi.
 
 	posts, err := a.cache.GetPostsByUserID(ctx, req.GetUserID())
 	if err != nil {
-		log.Err(err).Msg("storage.GetPostsByHashtag")
+		log.Err(err).Msg("storage.GetPostsByUserID")
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
