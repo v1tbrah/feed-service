@@ -26,10 +26,10 @@ type Reader struct {
 
 	postCli PostCli
 
-	cfg config.KafkaConfig
+	cfg config.Kafka
 }
 
-func Init(ctx context.Context, cache Cache, relationCli RelationCli, postCli PostCli, cfg config.KafkaConfig) (*Reader, error) {
+func Init(ctx context.Context, cache Cache, relationCli RelationCli, postCli PostCli, cfg config.Kafka) (*Reader, error) {
 	if !cfg.Enable {
 		return nil, nil
 	}

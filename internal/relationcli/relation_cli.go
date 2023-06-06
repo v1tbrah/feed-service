@@ -2,7 +2,6 @@ package relationcli
 
 import (
 	"context"
-	"fmt"
 	"net"
 
 	"github.com/pkg/errors"
@@ -19,9 +18,9 @@ type RelationCli struct {
 }
 
 func New(cfg config.RelationCli) (*RelationCli, error) {
-	conn, err := grpc.Dial(net.JoinHostPort(cfg.ServHost, cfg.ServPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(net.JoinHostPort(cfg.Host, cfg.Port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		return nil, fmt.Errorf("grpc.Dial: %w", err)
+		return nil, errors.Wrap(err, "grpc.Dial")
 	}
 
 	return &RelationCli{
@@ -35,6 +34,7 @@ func (r *RelationCli) Close(ctx context.Context) (err error) {
 
 	go func() {
 		if err = r.conn.Close(); err != nil {
+			err = errors.Wrap(err, "conn.Close")
 			closed <- struct{}{}
 			return
 		}
@@ -48,21 +48,4 @@ func (r *RelationCli) Close(ctx context.Context) (err error) {
 	case <-closed:
 		return err
 	}
-}
-func (r *RelationCli) GetFriends(ctx context.Context, userID int64) ([]int64, error) {
-	resp, err := r.cli.GetFriends(ctx, &rpbapi.GetFriendsRequest{UserID: userID})
-	if err != nil {
-		return nil, errors.Wrapf(err, "cli.GetFriends, userID: %d", userID)
-	}
-
-	if resp == nil {
-		return nil, errors.Errorf("nil resp from cli.GetFriends, userID: %d", userID)
-	}
-
-	result := make([]int64, 0, len(resp.GetFriends()))
-	for _, f := range resp.GetFriends() {
-		result = append(result, f)
-	}
-
-	return result, nil
 }

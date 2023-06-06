@@ -13,38 +13,38 @@ const (
 )
 
 type Config struct {
-	GRPCConfig        GRPCConfig
-	CacheConfig       CacheConfig
-	KafkaConfig       KafkaConfig
-	RelationCliConfig RelationCli
-	PostCliConfig     PostCli
+	GRPC        GRPC
+	Cache       Cache
+	Kafka       Kafka
+	RelationCli RelationCli
+	PostCli     PostCli
 
 	LogLvl zerolog.Level
 }
 
 func NewDefaultConfig() Config {
 	return Config{
-		GRPCConfig:        newDefaultGRPCConfig(),
-		CacheConfig:       newDefaultCacheConfig(),
-		KafkaConfig:       newDefaultKafkaConfig(),
-		RelationCliConfig: newDefaultRelationCliConfig(),
-		PostCliConfig:     newDefaultPostCliConfig(),
-		LogLvl:            defaultLogLvl,
+		GRPC:        newDefaultGRPCConfig(),
+		Cache:       newDefaultCacheConfig(),
+		Kafka:       newDefaultKafkaConfig(),
+		RelationCli: newDefaultRelationCliConfig(),
+		PostCli:     newDefaultPostCliConfig(),
+		LogLvl:      defaultLogLvl,
 	}
 }
 
 func (c *Config) ParseEnv() error {
-	c.GRPCConfig.parseEnv()
+	c.GRPC.parseEnv()
 
-	if err := c.CacheConfig.parseEnv(); err != nil {
+	if err := c.Cache.parseEnv(); err != nil {
 		return errors.Wrap(err, "cache config parse env")
 	}
 
-	c.KafkaConfig.parseEnv()
+	c.Kafka.parseEnv()
 
-	c.RelationCliConfig.parseEnv()
+	c.RelationCli.parseEnv()
 
-	c.PostCliConfig.parseEnv()
+	c.PostCli.parseEnv()
 
 	if err := c.parseEnvLogLvl(); err != nil {
 		return err

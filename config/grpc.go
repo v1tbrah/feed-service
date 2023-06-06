@@ -11,26 +11,26 @@ const (
 	envNameGRPCServPort = "GRPC_PORT"
 )
 
-type GRPCConfig struct {
-	ServHost string
-	ServPort string
+type GRPC struct {
+	Host string
+	Port string
 }
 
-func newDefaultGRPCConfig() GRPCConfig {
-	return GRPCConfig{
-		ServHost: defaultGRPCServHost,
-		ServPort: defaultGRPCServPort,
+func newDefaultGRPCConfig() GRPC {
+	return GRPC{
+		Host: defaultGRPCServHost,
+		Port: defaultGRPCServPort,
 	}
 }
 
-func (c *GRPCConfig) parseEnv() {
+func (c *GRPC) parseEnv() {
 	envServHost := os.Getenv(envNameGRPCServHost)
 	if envServHost != "" {
-		c.ServHost = envServHost
+		c.Host = envServHost
 	}
 
 	envServPort := os.Getenv(envNameGRPCServPort)
 	if envServPort != "" {
-		c.ServPort = envServPort
+		c.Port = envServPort
 	}
 }

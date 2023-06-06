@@ -35,8 +35,8 @@ func New(cache Cache) (newAPI *API) {
 	return newAPI
 }
 
-func (a *API) StartServing(ctx context.Context, cfg config.GRPCConfig, shutdownSig <-chan os.Signal) (err error) {
-	addr := net.JoinHostPort(cfg.ServHost, cfg.ServPort)
+func (a *API) StartServing(ctx context.Context, cfg config.GRPC, shutdownSig <-chan os.Signal) (err error) {
+	addr := net.JoinHostPort(cfg.Host, cfg.Port)
 	listen, errListen := net.Listen("tcp", addr)
 	if errListen != nil {
 		return fmt.Errorf("net listen tcp %s server: %w", addr, errListen)

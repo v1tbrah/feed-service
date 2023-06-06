@@ -20,15 +20,15 @@ const (
 	envNameUserToPostsMapName = "USER_TO_POSTS_MAP"
 )
 
-type CacheConfig struct {
+type Cache struct {
 	Host               string
 	Port               string
 	FeedDBIdx          int
 	UserToPostsMapName string
 }
 
-func newDefaultCacheConfig() CacheConfig {
-	return CacheConfig{
+func newDefaultCacheConfig() Cache {
+	return Cache{
 		Host:               defaultCacheHost,
 		Port:               defaultCachePort,
 		FeedDBIdx:          defaultFeedDBIdx,
@@ -36,7 +36,7 @@ func newDefaultCacheConfig() CacheConfig {
 	}
 }
 
-func (c *CacheConfig) parseEnv() error {
+func (c *Cache) parseEnv() error {
 	envHost := os.Getenv(envNameCacheHost)
 	if envHost != "" {
 		c.Host = envHost

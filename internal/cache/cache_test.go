@@ -20,7 +20,7 @@ func tHelperInitEmptyCache(t *testing.T) *Cache {
 	}
 	zerolog.SetGlobalLevel(cfg.LogLvl)
 
-	c, err := Init(cfg.CacheConfig)
+	c, err := Init(cfg.Cache)
 	if err != nil {
 		t.Fatalf("init cache: %v", err)
 	}

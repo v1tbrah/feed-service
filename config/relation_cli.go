@@ -13,25 +13,25 @@ const (
 )
 
 type RelationCli struct {
-	ServHost string
-	ServPort string
+	Host string
+	Port string
 }
 
 func newDefaultRelationCliConfig() RelationCli {
 	return RelationCli{
-		ServHost: defaultRelationServiceClientHost,
-		ServPort: defaultRelationServiceClientPort,
+		Host: defaultRelationServiceClientHost,
+		Port: defaultRelationServiceClientPort,
 	}
 }
 
 func (u *RelationCli) parseEnv() {
 	envServHost := os.Getenv(envNameRelationServiceClientHost)
 	if envServHost != "" {
-		u.ServHost = envServHost
+		u.Host = envServHost
 	}
 
 	envServPort := os.Getenv(envNameRelationServiceClientPort)
 	if envServPort != "" {
-		u.ServPort = envServPort
+		u.Port = envServPort
 	}
 }
