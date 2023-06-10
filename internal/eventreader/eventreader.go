@@ -8,7 +8,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/segmentio/kafka-go"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
+	"github.com/v1tbrah/feed-service/config"
 )
 
 type Reader struct {

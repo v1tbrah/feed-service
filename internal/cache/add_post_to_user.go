@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/redis/go-redis/v9"
 
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 const maxPostToUser = 10

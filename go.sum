@@ -88,6 +88,10 @@ github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
+github.com/v1tbrah/post-service v0.0.0-20230610172139-6e6e385d3079 h1:ru1AAjkT3F0eyvLsnAtZc4TA2T8VaFK6jIUp1+gmLdg=
+github.com/v1tbrah/post-service v0.0.0-20230610172139-6e6e385d3079/go.mod h1:ShpHX389y0ifR3PrtNaUgP7b8hlUkb34AQTsv9NDl2c=
+github.com/v1tbrah/relation-service v0.0.0-20230610171002-639ff106ff94 h1:GVVRs/PtXBOsh10tJJ4DmXZC9zrZOJ0F7/o2Wf3eVog=
+github.com/v1tbrah/relation-service v0.0.0-20230610171002-639ff106ff94/go.mod h1:zvJDymYtwW2Oh2+ojWd95gwVlQnbgBu08DQChXCZSOY=
 github.com/xdg-go/pbkdf2 v1.0.0 h1:Su7DPu48wXMwC3bs7MCNG+z4FhcyEuz5dlvchbq0B0c=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=
 github.com/xdg-go/scram v1.1.2 h1:FHX5I5B4i4hKRVRBCFRxq1iQRej7WO3hhBuJf+UUySY=
@@ -97,10 +101,6 @@ github.com/xdg-go/stringprep v1.0.4/go.mod h1:mPGuuIYwz7CmR2bT9j4GbQqutWS1zV24gi
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
-gitlab.com/pet-pr-social-network/post-service v0.0.0-20230605170712-906e3ae055a8 h1:c04stBpl778wjvNEojZMbQ0MFIErDhEQfe+ICZsINyY=
-gitlab.com/pet-pr-social-network/post-service v0.0.0-20230605170712-906e3ae055a8/go.mod h1:GBsTVEnSIpusMS0wDBIxlOlJiXy3FRj8A8djPrB2yqo=
-gitlab.com/pet-pr-social-network/relation-service v0.0.0-20230605154209-a4ba2324e44e h1:qxnX/R47kCqxPBVtaonAfPhzc3xXEpt6XNkbI+7uxWo=
-gitlab.com/pet-pr-social-network/relation-service v0.0.0-20230605154209-a4ba2324e44e/go.mod h1:218AczNqAJolJmyoUEVUxlEGT8N6/qIDHP4sN2AXFUQ=
 go.uber.org/atomic v1.7.0/go.mod h1:fEN4uk6kAWBTFdckzkM89CLk9XfWZrxpCo0nPH17wJc=
 go.uber.org/goleak v1.1.10/go.mod h1:8a7PlsEVH3e/a/GLqe5IIrQx6GzcnRmZEufDUTk4A7A=
 go.uber.org/multierr v1.6.0/go.mod h1:cdWPpRnG4AhwMwsgIHip0KRBQjJy5kYEpYjJxpXp9iU=
@@ -188,6 +188,8 @@ google.golang.org/grpc v1.27.0/go.mod h1:qbnxyOmOxrQa7FizSgH+ReBfzJrCY1pSN7KXBS8
 google.golang.org/grpc v1.29.1/go.mod h1:itym6AZVZYACWQqET3MqgPpjcuV5QH3BxFS3IjizoKk=
 google.golang.org/grpc v1.55.0 h1:3Oj82/tFSCeUrRTg/5E/7d/W5A1tj6Ky1ABAuZuv5ag=
 google.golang.org/grpc v1.55.0/go.mod h1:iYEXKGkEBhg1PjZQvoYEVPTDkHo1/bjTnfwTeGONTY8=
+google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0 h1:rNBFJjBCOgVr9pWD7rs/knKL4FRTKgpZmsRfV214zcA=
+google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0/go.mod h1:Dk1tviKTvMCz5tvh7t+fh94dhmQVHuCt2OzJB3CTW9Y=
 google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
 google.golang.org/protobuf v1.26.0/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
 google.golang.org/protobuf v1.30.0 h1:kPPoIgf3TsEvrm0PFe15JQ+570QVxYzEvvHqChK+cng=

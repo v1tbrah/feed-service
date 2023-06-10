@@ -8,7 +8,7 @@ import (
 
 	"github.com/rs/zerolog"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
+	"github.com/v1tbrah/feed-service/config"
 )
 
 func tHelperInitEmptyCache(t *testing.T) *Cache {

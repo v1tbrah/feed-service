@@ -7,7 +7,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 func (c *Cache) GetPostsByUserID(ctx context.Context, userID int64) ([]model.Post, error) {

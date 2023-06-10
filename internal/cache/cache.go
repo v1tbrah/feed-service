@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/redis/go-redis/v9"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
+	"github.com/v1tbrah/feed-service/config"
 )
 
 type Cache struct {

@@ -11,12 +11,12 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/api"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/cache"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/eventreader"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/postcli"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/relationcli"
+	"github.com/v1tbrah/feed-service/config"
+	"github.com/v1tbrah/feed-service/internal/api"
+	"github.com/v1tbrah/feed-service/internal/cache"
+	"github.com/v1tbrah/feed-service/internal/eventreader"
+	"github.com/v1tbrah/feed-service/internal/postcli"
+	"github.com/v1tbrah/feed-service/internal/relationcli"
 )
 
 func main() {

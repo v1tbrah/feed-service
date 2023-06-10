@@ -6,8 +6,8 @@ import (
 	"strconv"
 
 	"github.com/pkg/errors"
-	
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 func (c *Cache) RemovePostFromUser(ctx context.Context, userID int64, postID int64) error {
