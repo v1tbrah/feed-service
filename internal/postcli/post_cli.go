@@ -8,8 +8,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
-	"gitlab.com/pet-pr-social-network/post-service/ppbapi"
+	"github.com/v1tbrah/feed-service/config"
+
+	"github.com/v1tbrah/post-service/ppbapi"
 )
 
 type PostCli struct {

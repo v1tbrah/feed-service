@@ -5,7 +5,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
+	"github.com/v1tbrah/relation-service/rpbapi"
 )
 
 func (r *RelationCli) GetFriends(ctx context.Context, userID int64) ([]int64, error) {

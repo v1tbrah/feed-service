@@ -3,7 +3,7 @@ package eventreader
 import (
 	"context"
 
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 //go:generate mockery --name Cache

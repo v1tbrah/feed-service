@@ -8,8 +8,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"gitlab.com/pet-pr-social-network/feed-service/config"
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
+	"github.com/v1tbrah/feed-service/config"
+
+	"github.com/v1tbrah/relation-service/rpbapi"
 )
 
 type RelationCli struct {

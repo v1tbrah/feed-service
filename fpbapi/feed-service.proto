@@ -4,7 +4,7 @@ package fpbapi;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "social_network/feed-service/fpbapi";
+option go_package = "feed-service/fpbapi";
 
 service FeedService {
   rpc GetFeed(GetFeedRequest) returns (GetFeedResponse) {}

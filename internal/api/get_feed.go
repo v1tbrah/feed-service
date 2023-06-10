@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"gitlab.com/pet-pr-social-network/feed-service/fpbapi"
+	"github.com/v1tbrah/feed-service/fpbapi"
 )
 
 func (a *API) GetFeed(ctx context.Context, req *fpbapi.GetFeedRequest) (*fpbapi.GetFeedResponse, error) {

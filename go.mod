@@ -1,4 +1,4 @@
-module gitlab.com/pet-pr-social-network/feed-service
+module github.com/v1tbrah/feed-service
 
 go 1.20
 
@@ -9,8 +9,8 @@ require (
 	github.com/rs/zerolog v1.29.1
 	github.com/segmentio/kafka-go v0.4.41-0.20230519172151-199b8b2e0897
 	github.com/stretchr/testify v1.8.4
-	gitlab.com/pet-pr-social-network/post-service v0.0.0-20230605170712-906e3ae055a8
-	gitlab.com/pet-pr-social-network/relation-service v0.0.0-20230605154209-a4ba2324e44e
+	github.com/v1tbrah/post-service v0.0.0-20230610172139-6e6e385d3079
+	github.com/v1tbrah/relation-service v0.0.0-20230610171002-639ff106ff94
 	google.golang.org/grpc v1.55.0
 	google.golang.org/protobuf v1.30.0
 )
@@ -31,5 +31,6 @@ require (
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230530153820-e85fd2cbaebc // indirect
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

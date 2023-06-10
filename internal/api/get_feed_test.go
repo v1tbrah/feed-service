@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"gitlab.com/pet-pr-social-network/feed-service/fpbapi"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/api/mocks"
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+	"github.com/v1tbrah/feed-service/fpbapi"
+	"github.com/v1tbrah/feed-service/internal/api/mocks"
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 func TestAPI_GetFeed(t *testing.T) {

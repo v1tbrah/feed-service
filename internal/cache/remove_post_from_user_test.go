@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"gitlab.com/pet-pr-social-network/feed-service/internal/model"
+	"github.com/v1tbrah/feed-service/internal/model"
 )
 
 func TestCache_RemovePostFromUser(t *testing.T) {
