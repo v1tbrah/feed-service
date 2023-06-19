@@ -14,6 +14,7 @@ const (
 
 type Config struct {
 	GRPC        GRPC
+	HTTP        HTTP
 	Cache       Cache
 	Kafka       Kafka
 	RelationCli RelationCli
@@ -25,6 +26,7 @@ type Config struct {
 func NewDefaultConfig() Config {
 	return Config{
 		GRPC:        newDefaultGRPCConfig(),
+		HTTP:        newDefaultHTTPConfig(),
 		Cache:       newDefaultCacheConfig(),
 		Kafka:       newDefaultKafkaConfig(),
 		RelationCli: newDefaultRelationCliConfig(),
@@ -35,6 +37,8 @@ func NewDefaultConfig() Config {
 
 func (c *Config) ParseEnv() error {
 	c.GRPC.parseEnv()
+
+	c.HTTP.parseEnv()
 
 	if err := c.Cache.parseEnv(); err != nil {
 		return errors.Wrap(err, "cache config parse env")
