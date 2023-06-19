@@ -27,6 +27,8 @@ services:
     environment:
       - GRPC_HOST=0.0.0.0
       - GRPC_PORT=3030
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=3939
       - LOG_LVL=info
       - CACHE_HOST=feed-service-cache
       - CACHE_PORT=6379
@@ -39,6 +41,7 @@ services:
       - POST_SERVICE_CLIENT_PORT=5050
     ports:
       - "3030:3030"
+      - "3939:3939"
     networks:
       - default-network
 
